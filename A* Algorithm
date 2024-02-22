@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+const int N=INT16_MAX;
+
+bool visited[N];
+
+struct A_star{
+    int vertex;
+    int Actual;
+    int Estimate;
+    A_star(int V,int A,int E):vertex(V),Actual(A),Estimate(E){};
+};
+vector<A_star> adj[N];
+
+void Logic(int start,int end){
+    visited[start]=1;
+
+}
+
+int main() {
+    int v ,e;
+    cout<<"Enter the number of vertices and edges"<<endl;
+    cin>>v>>e;
+
+    for(int i=0;i<=v;i++){
+        visited[i]= false;
+    }
+
+    int x,y,actual,estimate;
+    for (int i = 0; i < e; ++i) {
+        cout<<"Enter the start and End Vertex"<<endl;
+        cin>>x>>y;
+        cout<<"Enter the Actual price and Estimate price of path "<<x<<" to "<<y<<endl;
+        adj[x].push_back(A_star(y,actual,estimate));
+        adj[y].push_back(A_star(x,actual,estimate));
+
+
+    }
+    return 0;
+}
