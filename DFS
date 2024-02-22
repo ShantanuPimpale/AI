@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+const int N=INT16_MAX;
+vector<int> adj[N];
+bool visited[N];
+
+void DFS(int A){
+    //preorder
+    visited[A]=1;
+    cout<<A<<" ";
+
+    //inorder
+    vector<int>::iterator it;
+    for(it=adj[A].begin();it!=adj[A].end();it++){
+        if(visited[*it]);
+        else{
+            DFS(*it);
+        }
+    }
+};
+
+int main() {
+    int n,e;
+    cout<<"Enter the number of vertices and Edges : "<<endl;
+    cin>>n>>e;
+
+    int x,y;
+    for (int i = 0; i <=n ; ++i) {
+        visited[i]= false;
+    }
+
+    for (int i = 0; i < e; ++i) {
+        cout<<"Enter starting and Ending vertex : "<<endl;
+        cin>>x>>y;
+        adj[x].push_back(y);
+        adj[y].push_back(x);
+    }
+    int start;
+    cout<<"Starting node : ";
+    cin>>start;
+    DFS(start);
+    return 0;
+}
